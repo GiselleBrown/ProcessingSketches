@@ -1,3 +1,4 @@
+int f = 2;
 int y = 50;
 int x = (int)random(500);
 int score = 0;
@@ -8,7 +9,7 @@ void draw(){
   background(255,255,255);
  fill(17,119,170);
   ellipse(x,y,10,10);
-  y++;
+  y+=f;
   if(y>500){
     checkCatch(x);
     y=y-450;
@@ -20,10 +21,14 @@ fill(0,0,0);
 }
 void checkCatch(int x){
   //print(x +" " + mouseX);
-if (x > mouseX && x < mouseX+100)
+if (x > mouseX && x < mouseX+100){
       score++;
-   else if (score > 0)
+      f+=1;
+}
+   else if (score > 0){
      score--;
+     f-=2;
+   }
 println("Your score is now: " + score);
 }
 
