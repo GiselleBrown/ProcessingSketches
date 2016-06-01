@@ -1,14 +1,22 @@
-PImage pictureOfRecord;
-int rotate = 100;
 import ddf.minim.*;
+PImage pictureOfRecord;
+Minim minim;
+AudioPlayer song;  
+int rotate = 100;
 void setup(){
+  minim = new Minim(this);  
+  song = minim.loadFile("spongebob.wav", 512);
   pictureOfRecord= loadImage("record.gif");
   size(700,700);
+  
 }
 void draw(){
   if(mousePressed){
-  rotate+=2;
+  rotate+=90;
   rotateImage(pictureOfRecord, rotate);}
+  if(mousePressed){
+    song.play();
+    song.pause();}
   image(pictureOfRecord, 0,0);
   
 }     
